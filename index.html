@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mebelora — Главная</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #fafafa;
+      color: #222;
+      line-height: 1.6;
+    }
+    header {
+      background: #fff;
+      padding: 1rem 2rem;
+      border-bottom: 1px solid #ddd;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.4rem;
+      color: #c7965b;
+    }
+    nav a {
+      margin-left: 1.5rem;
+      text-decoration: none;
+      color: #222;
+      font-weight: 600;
+    }
+    main {
+      max-width: 960px;
+      margin: 2rem auto;
+      padding: 1rem;
+    }
+    h2 {
+      color: #c7965b;
+      text-align: center;
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .product {
+      background: #fff;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      text-align: center;
+    }
+    .product img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+    .product p {
+      margin: 0.5rem 0;
+    }
+    .product button {
+      margin-top: 0.5rem;
+      background: #c7965b;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    footer {
+      background: #eee;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      margin-top: 2rem;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      max-width: 400px;
+      width: 90%;
+    }
+    .modal-content input, .modal-content textarea {
+      width: 100%;
+      padding: 0.6rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .modal-content button {
+      background: #c7965b;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      color: white;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Mebelora</h1>
+    <nav>
+      <a href="index.html">Каталог</a>
+      <a href="about.html">О компании</a>
+      <a href="contacts.html">Контакты</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Шкафы и комоды</h2>
+    <div class="product-grid">
+      <div class="product">
+        <img src="https://images.pexels.com/photos/1866149/pexels-photo-1866149.jpeg" alt="Шкаф-купе">
+        <p>Шкаф-купе — 2 400 000 UZS</p>
+        <button onclick="openModal()">Заказать</button>
+      </div>
+      <div class="product">
+        <img src="https://images.pexels.com/photos/271743/pexels-photo-271743.jpeg" alt="Комод">
+        <p>Комод — 1 150 000 UZS</p>
+        <button onclick="openModal()">Заказать</button>
+      </div>
+    </div>
+
+    <h2 style="margin-top:3rem;">Кухни</h2>
+    <div class="product-grid">
+      <div class="product">
+        <img src="https://images.pexels.com/photos/6566752/pexels-photo-6566752.jpeg" alt="Кухня 1">
+        <p>Кухня белая — 5 800 000 UZS</p>
+        <button onclick="openModal()">Заказать</button>
+      </div>
+      <div class="product">
+        <img src="https://images.pexels.com/photos/2724748/pexels-photo-2724748.jpeg" alt="Кухня 2">
+        <p>Кухня деревянная — 6 200 000 UZS</p>
+        <button onclick="openModal()">Заказать</button>
+      </div>
+      <div class="product">
+        <img src="https://images.pexels.com/photos/2089698/pexels-photo-2089698.jpeg" alt="Кухня 3">
+        <p>Кухня минимализм — 4 950 000 UZS</p>
+        <button onclick="openModal()">Заказать</button>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2025 Mebelora. Все права защищены.
+  </footer>
+
+  <div class="modal" id="orderModal">
+    <div class="modal-content">
+      <h3>Оставить заявку</h3>
+      <input type="text" placeholder="Ваше имя" />
+      <input type="text" placeholder="Телефон" />
+      <textarea placeholder="Комментарий"></textarea>
+      <button onclick="sendToTelegram()">Отправить</button>
+    </div>
+  </div>
+
+  <script>
+    function openModal() {
+      document.getElementById('orderModal').style.display = 'flex';
+    }
+    function sendToTelegram() {
+      alert('Заявка отправлена! (имитация)');
+      document.getElementById('orderModal').style.display = 'none';
+    }
+    window.onclick = function(e) {
+      if (e.target.classList.contains('modal')) {
+        e.target.style.display = 'none';
+      }
+    };
+  </script>
+</body>
+</html>
